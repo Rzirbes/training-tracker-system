@@ -1,0 +1,17 @@
+[
+  {
+    "name": "José Barros",
+    "email": "barros@rede.ulbra.br",
+    "password": "$2b$10$pnBAyBtc7/oW0ngX7bgkueX4iTXa43wwgP0mYGyCQA49gqR5fx2W2"
+  },
+  {
+    "name": "Rômulo Zirbes",
+    "email": "rzirbes5@rede.ulbra.br",
+    "password": "$2b$10$pnBAyBtc7/oW0ngX7bgkueX4iTXa43wwgP0mYGyCQA49gqR5fx2W2"
+  },
+  {
+    "name": "Zilmar Quadros",
+    "email": "personal.zilmar@icloud.com",
+    "password": "$2b$10$pnBAyBtc7/oW0ngX7bgkueX4iTXa43wwgP0mYGyCQA49gqR5fx2W2"
+  }
+]

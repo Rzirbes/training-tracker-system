@@ -1,0 +1,218 @@
+[
+	{
+		"id": 12,
+		"uuid": "d54a619a-9a13-4bb4-bf1f-4e755cb68ca9",
+		"name": "Acre",
+		"uf": "AC",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 27,
+		"uuid": "a086b49d-26e4-47d9-afaa-4312d7c9b062",
+		"name": "Alagoas",
+		"uf": "AL",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 16,
+		"uuid": "2674c3a0-8393-4c09-938d-1a8b7f4f2749",
+		"name": "Amapá",
+		"uf": "AP",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 13,
+		"uuid": "b4b58d5a-27b9-4a1e-9a2a-64a10c743078",
+		"name": "Amazonas",
+		"uf": "AM",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 29,
+		"uuid": "e25748e7-1dd6-4140-9e67-d4e5f1806e94",
+		"name": "Bahia",
+		"uf": "BA",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 23,
+		"uuid": "774e8c7f-64d8-42da-a116-9e4ec12dd1ef",
+		"name": "Ceará",
+		"uf": "CE",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 53,
+		"uuid": "c9a06f24-407b-42b6-8d8e-9e548a33db6e",
+		"name": "Distrito Federal",
+		"uf": "DF",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 32,
+		"uuid": "dc8d28e0-e6f2-41a7-b83f-6558a92a1600",
+		"name": "Espírito Santo",
+		"uf": "ES",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 52,
+		"uuid": "5d3bfe88-7e3e-407d-954f-7e8a07ad40b2",
+		"name": "Goiás",
+		"uf": "GO",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 21,
+		"uuid": "f23c0e69-5edf-4c16-bfeb-c83c72b6752e",
+		"name": "Maranhão",
+		"uf": "MA",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 51,
+		"uuid": "36d7aacc-cbcf-46f9-b9f1-3d822ce6a60d",
+		"name": "Mato Grosso",
+		"uf": "MT",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 50,
+		"uuid": "dd3cfdb2-73ef-439e-bdc7-7f08e06a36b2",
+		"name": "Mato Grosso do Sul",
+		"uf": "MS",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 31,
+		"uuid": "b993e61f-1617-4a7a-9247-772641742e6f",
+		"name": "Minas Gerais",
+		"uf": "MG",
+		"isEnabled": true,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 15,
+		"uuid": "b9b52c43-199e-4f65-bc88-d13b3cc632a4",
+		"name": "Pará",
+		"uf": "PA",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 25,
+		"uuid": "016b29e4-684b-4ef2-b418-b539142fa579",
+		"name": "Paraíba",
+		"uf": "PB",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 41,
+		"uuid": "f6e71b85-2ad1-41c6-90f7-13bf5c50a9c3",
+		"name": "Paraná",
+		"uf": "PR",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 26,
+		"uuid": "6b2e67f9-0717-4e95-a66c-b7b3c6b93a96",
+		"name": "Pernambuco",
+		"uf": "PE",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 22,
+		"uuid": "5ecf3c9c-8e7c-42e0-9a57-5e71c9ed3c7d",
+		"name": "Piauí",
+		"uf": "PI",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 33,
+		"uuid": "d82b5924-c6eb-49c1-819e-8e318b2d35e1",
+		"name": "Rio de Janeiro",
+		"uf": "RJ",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 24,
+		"uuid": "2b53d2b9-557e-4e9d-9e01-d253ab9c97db",
+		"name": "Rio Grande do Norte",
+		"uf": "RN",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 43,
+		"uuid": "9714d7ac-c6cf-4a5e-9a44-ba431865f46b",
+		"name": "Rio Grande do Sul",
+		"uf": "RS",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 11,
+		"uuid": "e74d83d5-789e-46b4-8e10-bcd660d49b6a",
+		"name": "Rondônia",
+		"uf": "RO",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 14,
+		"uuid": "a67a33e4-748a-4f2f-9f58-1e852c2359d0",
+		"name": "Roraima",
+		"uf": "RR",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 42,
+		"uuid": "4e2f57e4-3f88-44c4-9e15-6b3d98b7a6ed",
+		"name": "Santa Catarina",
+		"uf": "SC",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 35,
+		"uuid": "98c65064-7841-4c8a-8aa3-9d8d6fb22d3d",
+		"name": "São Paulo",
+		"uf": "SP",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 28,
+		"uuid": "e7f45f32-3201-4b67-ae53-c6bfba43395f",
+		"name": "Sergipe",
+		"uf": "SE",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	},
+	{
+		"id": 17,
+		"uuid": "26a7b500-7ab3-4f4d-8a73-6c8c48567136",
+		"name": "Tocantins",
+		"uf": "TO",
+		"isEnabled": false,
+		"country_uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da"
+	}
+]

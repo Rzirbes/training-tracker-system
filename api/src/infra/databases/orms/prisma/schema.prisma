@@ -1,0 +1,499 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing"]
+}
+
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  uuid        String   @unique() @default(uuid()) @db.Uuid()
+  name        String   @db.VarChar(255)
+  email       String   @unique @db.VarChar(255)
+  password    String   @db.VarChar(255)
+  role        String   @db.VarChar(255)
+  isEnabled   Boolean  @default(true) @map("is_enabled")
+  firstAccess Boolean  @default(false) @map("first_access")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  tokens      Token[]
+  coach       Coach?
+
+  @@map("users")
+}
+
+model Token {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique() @default(uuid()) @db.Uuid()
+  type      String   @db.VarChar(50)
+  token     String   @db.VarChar(255)
+  expiresIn DateTime @map("expires_in")
+  isValid   Boolean  @default(true) @map("is_valid")
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("tokens")
+}
+
+model MonitoryToken {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique() @default(uuid()) @db.Uuid()
+  type      String   @db.VarChar(50)
+  token     String   @db.VarChar(255)
+  expiresIn DateTime @map("expires_in")
+  isValid   Boolean  @default(true) @map("is_valid")
+  athleteId Int      @map("athlete_id")
+  athlete   Athlete  @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("monitory_tokens")
+}
+
+model Coach {
+  id                    Int               @id @default(autoincrement())
+  uuid                  String            @unique() @default(uuid()) @db.Uuid()
+  name                  String            @db.VarChar(255)
+  email                 String            @unique @db.VarChar(255)
+  userId                Int               @unique()
+  user                  User              @relation(fields: [userId], references: [id])
+  isEnabled             Boolean           @default(true) @map("is_enabled")
+  createdAt             DateTime          @default(now()) @map("created_at")
+  updatedAt             DateTime          @updatedAt @map("updated_at")
+  role                  String?           @db.VarChar(255)
+  phone                 String?           @db.VarChar(18)
+  schedulerColor        String            @db.VarChar(255)
+  allowScheduleConflict Boolean           @default(false) @map("allow_schedule_conflict")
+  addressId             Int?              @unique()
+  address               Address?          @relation(fields: [addressId], references: [id])
+  schedules             ScheduleWorkout[]
+  absenceSchedules      AbsenceSchedule[]
+
+  @@map("coaches")
+}
+
+model Athlete {
+  id                Int                   @id @default(autoincrement())
+  uuid              String                @unique() @default(uuid()) @db.Uuid()
+  name              String                @db.VarChar(255)
+  email             String                @unique @db.VarChar(255)
+  birthday          DateTime
+  weight            Float?
+  height            Float?
+  cpf               String?               @db.VarChar(11)
+  phone             String?               @db.VarChar(22)
+  position          FootballPosition?
+  positions         FootballPosition[]
+  dominantFoot      DominantFoot?         @map("dominant_foot")
+  bestSkill         String?               @map("best_skill") @db.VarChar(255)
+  worstSkill        String?               @map("worst_skill") @db.VarChar(255)
+  goal              String?               @db.VarChar(255)
+  observation       String?               @db.VarChar(255)
+  avatarUrl         String?               @map("avatar_url") @db.VarChar(500)
+  isEnabled         Boolean               @default(true) @map("is_enabled")
+  createdAt         DateTime              @default(now()) @map("created_at")
+  updatedAt         DateTime              @updatedAt @map("updated_at")
+  addressId         Int?                  @unique() @map("address_id")
+  address           Address?              @relation(fields: [addressId], references: [id])
+  isMonitorDaily    Boolean               @default(true) @map("is_monitor_daily")
+  photos            AthletePhoto[]
+  trainingPlannings TrainingPlanning[]
+  training          Training[]
+  weeklyMonitorings WeeklyMonitoring[]
+  wellBeingCaptures WellBeingMonitoring[]
+  schedules         ScheduleWorkout[]
+  injuries          Injury[]
+  pains             Pain[]
+  athleteClubs      AthleteClub[]
+  monitoryTokens    MonitoryToken[]
+
+  @@map("athletes")
+}
+
+model AthletePhoto {
+  id        Int      @id @default(autoincrement())
+  url       String
+  extension String
+  athleteId Int      @map("athlete_id")
+  athlete   Athlete  @relation(fields: [athleteId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("athlete_photos")
+}
+
+model TrainingType {
+  id                  Int                   @id @default(autoincrement())
+  uuid                String                @unique() @default(uuid()) @db.Uuid()
+  name                String                @db.VarChar(255)
+  isEnabled           Boolean               @default(true) @map("is_enabled")
+  createdAt           DateTime              @default(now()) @map("created_at")
+  updatedAt           DateTime              @updatedAt @map("updated_at")
+  trainingPlannings   TrainingPlanning[]
+  trainings           Training[]
+  defaultTrainingType DefaultTrainingType[]
+
+  @@map("training_types")
+}
+
+model DefaultTrainingType {
+  id             Int          @id @default(autoincrement())
+  uuid           String       @unique() @default(uuid()) @db.Uuid()
+  trainingTypeId Int
+  trainingType   TrainingType @relation(fields: [trainingTypeId], references: [id])
+
+  @@map("default_training_types")
+}
+
+model TrainingPlanning {
+  id             Int              @id @default(autoincrement())
+  uuid           String           @unique() @default(uuid()) @db.Uuid()
+  athleteId      Int
+  athlete        Athlete          @relation(fields: [athleteId], references: [id])
+  trainingTypeId Int
+  trainingType   TrainingType     @relation(fields: [trainingTypeId], references: [id])
+  date           DateTime
+  duration       Float
+  pse            Float
+  description    String?          @db.VarChar(255)
+  finished       Boolean          @default(false)
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  schedule       ScheduleWorkout?
+
+  @@map("training_plannings")
+}
+
+model Training {
+  id             Int              @id @default(autoincrement())
+  uuid           String           @unique() @default(uuid()) @db.Uuid()
+  athleteId      Int
+  athlete        Athlete          @relation(fields: [athleteId], references: [id])
+  trainingTypeId Int
+  trainingType   TrainingType     @relation(fields: [trainingTypeId], references: [id])
+  date           DateTime
+  duration       Float
+  pse            Float
+  psr            Float
+  load           Float
+  description    String?          @db.VarChar(2000)
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  schedule       ScheduleWorkout?
+  injuries       Injury[]
+  pains          Pain[]
+
+  @@map("trainings")
+}
+
+model WeeklyMonitoring {
+  id              Int      @id @default(autoincrement())
+  uuid            String   @unique() @default(uuid()) @db.Uuid()
+  week            String
+  startDate       DateTime
+  endDate         DateTime
+  weekLoad        Float
+  averageWeekLoad Float
+  monotony        Float
+  chronic         Float
+  acute           Float
+  chronicAcute    Float
+  strain          Float
+  deviation       Float
+  athleteId       Int
+  athlete         Athlete  @relation(fields: [athleteId], references: [id])
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@unique([athleteId, week])
+  @@map("weeklys_monitoring")
+}
+
+model WellBeingMonitoring {
+  id          Int      @id @default(autoincrement())
+  uuid        String   @unique() @default(uuid()) @db.Uuid()
+  date        DateTime
+  athleteId   Int
+  athlete     Athlete  @relation(fields: [athleteId], references: [id])
+  sleep       Int
+  sleepHours  Int      @map("sleep_hours")
+  energy      Int
+  nutrition   Int
+  waterIntake Int      @map("water_intake")
+  stress      Int
+  pain        Int
+  fatigue     Int
+  humor       Int
+  motivation  Int
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@unique([athleteId, date])
+  @@map("well_being_monitoring")
+}
+
+model Unsubscribes {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique() @default(uuid()) @db.Uuid()
+  email     String   @unique() @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("unsubscribes")
+}
+
+model Country {
+  id        Int       @id
+  uuid      String    @unique() @default(uuid()) @db.Uuid()
+  name      String    @db.VarChar(150)
+  code      String?   @db.VarChar(3)
+  isEnabled Boolean   @default(false) @map("is_enabled")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  states    State[]
+  address   Address[]
+  clubs     Club[]
+
+  @@map("countries")
+}
+
+model State {
+  id        Int       @id
+  uuid      String    @unique() @default(uuid()) @db.Uuid()
+  name      String    @db.VarChar(150)
+  uf        String?   @db.VarChar(4)
+  countryId Int?      @map("country_id")
+  country   Country?  @relation(fields: [countryId], references: [id])
+  isEnabled Boolean   @default(false) @map("is_enabled")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  cities    City[]
+  address   Address[]
+  clubs     Club[]
+
+  @@map("states")
+}
+
+model City {
+  id        Int       @id
+  uuid      String    @unique() @default(uuid()) @db.Uuid()
+  stateId   Int       @map("state_id")
+  state     State     @relation(fields: [stateId], references: [id])
+  name      String    @db.VarChar(150)
+  isEnabled Boolean   @default(true) @map("is_enabled")
+  slug      String?   @db.VarChar(150)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  address   Address[]
+  clubs     Club[]
+
+  @@map("cities")
+}
+
+model Address {
+  id             Int      @id @default(autoincrement())
+  uuid           String   @unique() @default(uuid()) @db.Uuid()
+  street         String?  @db.VarChar(255)
+  neighborhood   String?  @db.VarChar(255)
+  buildingNumber String?  @map("building_number") @db.VarChar(10)
+  complement     String?  @db.VarChar(255)
+  zipCode        String?  @map("zip_code") @db.VarChar(10)
+  city           City?    @relation(fields: [cityId], references: [id])
+  cityId         Int?     @map("city_id")
+  state          State?   @relation(fields: [stateId], references: [id])
+  stateId        Int?     @map("state_id")
+  country        Country? @relation(fields: [countryId], references: [id])
+  countryId      Int?     @map("country_id")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  coach          Coach?
+  athlete        Athlete?
+
+  @@map("address")
+}
+
+model ScheduleWorkout {
+  id                 Int              @id @default(autoincrement())
+  uuid               String           @unique() @default(uuid()) @db.Uuid()
+  start              DateTime
+  end                DateTime
+  confirmed          Boolean          @default(false)
+  canceled           Boolean          @default(false)
+  athleteId          Int              @map("athlete_id")
+  athlete            Athlete          @relation(fields: [athleteId], references: [id])
+  coachId            Int              @map("coach_id")
+  coach              Coach            @relation(fields: [coachId], references: [id])
+  trainingPlanningId Int              @unique @map("training_planning_id")
+  trainingPlanning   TrainingPlanning @relation(fields: [trainingPlanningId], references: [id])
+  finishTrainingId   Int?             @unique @map("finish_training_id")
+  finishTraining     Training?        @relation(fields: [finishTrainingId], references: [id])
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+
+  @@map("schedule_workouts")
+}
+
+model AbsenceSchedule {
+  id          Int      @id @default(autoincrement())
+  uuid        String   @unique() @default(uuid()) @db.Uuid()
+  start       DateTime
+  end         DateTime
+  description String?  @db.VarChar(255)
+  coachId     Int      @map("coach_id")
+  coach       Coach    @relation(fields: [coachId], references: [id])
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("absence_schedules")
+}
+
+model Injury {
+  id                 Int           @id @default(autoincrement())
+  uuid               String        @unique() @default(uuid()) @db.Uuid()
+  date               DateTime
+  type               String        @db.VarChar(255)
+  bodyRegion         String        @map("body_region") @db.VarChar(255)
+  bodySide           BodySide      @map("body_side")
+  degree             InjuryDegree
+  occurredDuring     InjuryContext @map("occurred_during")
+  description        String?       @db.Text
+  diagnosisConfirmed Boolean       @default(false) @map("diagnosis_confirmed")
+  examType           String?       @map("exam_type")
+  requiresSurgery    Boolean       @default(false) @map("requires_surgery")
+  surgeryDate        DateTime?     @map("surgery_date")
+  treatmentType      String?       @map("treatment_type") @db.VarChar(255)
+  returnDatePlanned  DateTime?     @map("returnDate_planned")
+  returnDateActual   DateTime?     @map("returnDate_actual")
+  minutesFirstGame   Int?          @map("minutes_first_game")
+  notes              String?       @db.Text
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  athleteId          Int
+  athlete            Athlete       @relation(fields: [athleteId], references: [id])
+  trainingId         Int?
+  training           Training?     @relation(fields: [trainingId], references: [id])
+
+  @@map("injuries")
+}
+
+model Pain {
+  id             Int           @id @default(autoincrement())
+  uuid           String        @unique() @default(uuid()) @db.Uuid()
+  date           DateTime
+  intensity      Int
+  bodyRegion     String        @map("body_region") @db.VarChar(255)
+  bodySide       BodySide      @map("body_side")
+  occurredDuring InjuryContext @map("occurred_during")
+  description    String?       @db.Text
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  athleteId      Int
+  athlete        Athlete       @relation(fields: [athleteId], references: [id])
+  trainingId     Int?
+  training       Training?     @relation(fields: [trainingId], references: [id])
+
+  @@map("pains")
+}
+
+model Club {
+  id           Int           @id @default(autoincrement())
+  uuid         String        @unique() @default(uuid()) @db.Uuid()
+  name         String        @db.VarChar(255)
+  isEnabled    Boolean       @default(true) @map("is_enabled")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  cityId       Int?          @map("city_id")
+  city         City?         @relation(fields: [cityId], references: [id])
+  stateId      Int?          @map("state_id")
+  state        State?        @relation(fields: [stateId], references: [id])
+  countryId    Int?          @map("country_id")
+  country      Country?      @relation(fields: [countryId], references: [id])
+  athleteClubs AthleteClub[]
+
+  @@map("clubs")
+}
+
+model AthleteClub {
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique() @default(uuid()) @db.Uuid()
+  athleteId Int
+  athlete   Athlete   @relation(fields: [athleteId], references: [id])
+  clubId    Int
+  club      Club      @relation(fields: [clubId], references: [id])
+  startDate DateTime
+  endDate   DateTime?
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("athletes_clubs")
+}
+
+enum BodySide {
+  BILATERAL
+  RIGHT
+  LEFT
+}
+
+enum InjuryDegree {
+  MICROTRAUMA
+  GRAU_I
+  GRAU_II
+  GRAU_III
+  TOTAL
+}
+
+enum InjuryContext {
+  GAME
+  TRAINING
+  ACADEMY
+  OUT_FIELD
+  OTHERS
+}
+
+enum DominantFoot {
+  RIGHT
+  LEFT
+  AMBIDEXTRO
+}
+
+enum FootballPosition {
+  GOALKEEPER
+
+  RIGHT_FULLBACK
+  LEFT_FULLBACK
+
+  RIGHT_WING_BACK
+  LEFT_WING_BACK
+
+  BACK
+  RIGHT_CENTER_BACK
+  LEFT_CENTER_BACK
+
+  SWEEPER
+
+  DEFENSIVE_MIDFIELDER
+  RIGHT_DEFENSIVE_MIDFIELDER
+  LEFT_DEFENSIVE_MIDFIELDER
+
+  CENTRAL_MIDFIELDER
+  RIGHT_CENTRAL_MIDFIELDER
+  LEFT_CENTRAL_MIDFIELDER
+
+  ATTACKING_MIDFIELDER
+
+  RIGHT_WINGER
+  LEFT_WINGER
+
+  SECOND_STRIKER
+  CENTER_FORWARD
+
+  STRIKER
+}

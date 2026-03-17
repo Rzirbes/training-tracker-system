@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "uuid": "e2d2639e-0fc2-4d6c-bf8d-4fd94df3d3f0",
+    "name": "Alemanha",
+    "code": "DE"
+  },
+  {
+    "id": 2,
+    "uuid": "e8b77236-4eb7-48c2-a07a-2a012b3692a7",
+    "name": "Argentina",
+    "code": "AR"
+  },
+  {
+    "id": 3,
+    "uuid": "5e0e8b35-25fd-4a7d-b06f-3f9ef2f4e8da",
+    "name": "Brasil",
+    "code": "BR"
+  },
+  {
+    "id": 4,
+    "uuid": "d08f43f8-5f5e-4b38-a5ee-cb4cc2a14ea4",
+    "name": "Bélgica",
+    "code": "BE"
+  },
+  {
+    "id": 5,
+    "uuid": "8c0c8463-c525-4e91-b5c4-183caa0701b6",
+    "name": "Camarões",
+    "code": "CM"
+  },
+  {
+    "id": 6,
+    "uuid": "46937045-1b64-4f8d-a8c8-b9b2de8ea8e4",
+    "name": "Chile",
+    "code": "CL"
+  },
+  {
+    "id": 7,
+    "uuid": "dc3b2b98-4a71-4ff1-9e3f-05d733a19e86",
+    "name": "Colômbia",
+    "code": "CO"
+  },
+  {
+    "id": 8,
+    "uuid": "2bba2f2c-bd7a-4f68-bb60-42f4e44c7d0c",
+    "name": "Croácia",
+    "code": "HR"
+  },
+  {
+    "id": 9,
+    "uuid": "9ccf7ff7-31e4-45a3-9f0a-89eb0d4c8ee3",
+    "name": "Espanha",
+    "code": "ES"
+  },
+  {
+    "id": 10,
+    "uuid": "fa7dbd18-994d-4214-85a8-7c9a54a8472d",
+    "name": "Estados Unidos",
+    "code": "US"
+  },
+  {
+    "id": 11,
+    "uuid": "41b7d59d-f3b5-4c89-8e1c-879f1ca9dc97",
+    "name": "França",
+    "code": "FR"
+  },
+  {
+    "id": 12,
+    "uuid": "9f3cb0eb-7e6c-4d4f-9c58-8502933560ad",
+    "name": "Inglaterra",
+    "code": "GB"
+  },
+  {
+    "id": 13,
+    "uuid": "2f6359d4-9e89-4305-91d4-3af6a8e6b7b1",
+    "name": "Japão",
+    "code": "JP"
+  },
+  {
+    "id": 14,
+    "uuid": "9be7f90b-36c9-4a6f-8c1b-5e77a23fbc52",
+    "name": "Itália",
+    "code": "IT"
+  },
+  {
+    "id": 15,
+    "uuid": "7c7559c8-9f4c-4b5b-91d0-7c7c8dc478d1",
+    "name": "México",
+    "code": "MX"
+  },
+  {
+    "id": 16,
+    "uuid": "fb32b93c-0a1e-46c9-87bb-3f2c410e8b79",
+    "name": "Holanda",
+    "code": "NL"
+  },
+  {
+    "id": 17,
+    "uuid": "f818d5f7-b354-4e1f-b804-3271ed37ca10",
+    "name": "Portugal",
+    "code": "PT"
+  },
+  {
+    "id": 18,
+    "uuid": "f7df2a2b-6a0d-48c3-a0d3-9738ff56d0f2",
+    "name": "Senegal",
+    "code": "SN"
+  },
+  {
+    "id": 19,
+    "uuid": "547e67e9-07d1-4d29-87a3-839c6c0d74cb",
+    "name": "Suíça",
+    "code": "CH"
+  },
+  {
+    "id": 20,
+    "uuid": "2e5f8b16-89c4-45cc-99f0-f97a91dfe103",
+    "name": "Uruguai",
+    "code": "UY"
+  }
+]

@@ -1,0 +1,204 @@
+.rbc-time-content {
+  border-top: none;
+  overflow-x: hidden;
+}
+
+.rbc-event-label {
+  display: none;
+}
+
+.rbc-today {
+  background-color: hsla(var(--muted));
+  color: hsla(var(--primary));
+  font-weight: 600;
+}
+
+.rbc-header.rbc-today,
+.rbc-time-header-content .rbc-row .rbc-header.rbc-today {
+  color: hsl(var(--primary));
+  font-weight: 700;
+}
+
+.rbc-today {
+  background-color: hsla(var(--muted));
+  font-weight: 600;
+}
+
+.rbc-header.rbc-today {
+  color: hsla(var(--primary)) !important;
+  font-weight: 700;
+}
+
+.rbc-header {
+  background-color: hsla(var(--muted));
+  color: hsla(var(--foreground));
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 0;
+  border-right: 1px solid hsla(var(--border));
+  display: flex;
+  flex-direction: column;
+}
+
+.rbc-header:last-child {
+  border-radius: 0 6px 0 0;
+}
+
+.rbc-calendar {
+  margin-top: 20px;
+  border-radius: 6px;
+  background-color: hsla(var(--background));
+  color: hsla(var(--foreground));
+}
+
+.rbc-month-view,
+.rbc-week-view,
+.rbc-time-view,
+.rbc-content {
+  border-radius: 6px;
+}
+
+.rbc-timeslot-group {
+  border: none;
+  border-top: 1px solid hsla(var(--border));
+  min-height: 76px;
+}
+
+.rbc-header-active {
+  background-color: hsla(var(--accent-muted));
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: hsla(var(--foreground));
+}
+
+.rbc-time-gutter .rbc-timeslot-group:last-child {
+  border-radius: 0 0 0 6px;
+}
+
+.rbc-time-gutter .rbc-timeslot-group {
+  background-color: hsla(var(--background-secondary));
+  color: hsla(var(--foreground));
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  z-index: 50;
+}
+
+.rbc-time-gutter .rbc-timeslot-group > .rbc-label {
+  padding: 0;
+  margin: 0;
+}
+
+.rbc-time-gutter .rbc-timeslot-group:not(:last-child) {
+  border-color: hsla(var(--border));
+}
+
+.rbc-current-time-indicator {
+  background-color: hsl(var(--primary));
+  height: 2px;
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.12);
+}
+
+.rbc-current-time-indicator::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+}
+
+.rbc-current-time-indicator:after {
+  content: " ";
+  height: 2px;
+  position: absolute;
+  background-color: hsla(var(--primary));
+  left: 100%;
+  width: 100vw;
+}
+
+.rbc-slot-selection {
+  background-color: hsla(var(--primary) / 0.8);
+  border: hsla(var(--border));
+  z-index: 80;
+  position: absolute;
+}
+
+.rbc-month-view {
+  display: grid;
+}
+
+.rbc-month-view .rbc-row-content {
+  min-height: 100px;
+  position: block;
+}
+
+.rbc-event {
+  border-radius: 14px !important;
+  box-shadow:
+    0 4px 12px hsl(var(--foreground) / 0.08),
+    inset 0 1px 0 hsl(0 0% 100% / 0.15);
+  border: 1px solid hsl(var(--border) / 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.rbc-event:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px hsl(var(--foreground) / 0.12);
+  transition: all 0.2s ease;
+}
+
+.rbc-day-bg.rbc-today {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--accent) / 0.8),
+    hsl(var(--background))
+  ) !important;
+}
+
+.rbc-event-content {
+  display: flex !important;
+  cursor: pointer;
+}
+
+.rbc-day-slot .rbc-events-container {
+  padding-right: 10px;
+  margin-right: 10px;
+}
+.rbc-off-range-bg {
+  background-color: hsla(var(--muted) / 0.5);
+}
+
+.rbc-button-link {
+  padding: 0.25rem;
+}
+
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-show-more {
+  background: hsla(var(--muted));
+  color: hsla(var(--foreground));
+}
+.rbc-time-view .rbc-day-bg + .rbc-day-bg,
+.rbc-time-content > * + * {
+  border-left: 2px solid color-mix(in srgb, hsla(var(--border)), white) !important;
+}
+
+.rbc-time-header-content > .rbc-row > .rbc-header + .rbc-header {
+  border-left: 2px solid color-mix(in srgb, hsla(var(--border)), white 30%) !important;
+}
+
+.rbc-day-slot {
+  cursor: pointer;
+}
+
+.rbc-time-slot:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
