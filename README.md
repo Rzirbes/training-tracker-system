@@ -3,6 +3,8 @@
 Fullstack platform for athlete performance tracking, scheduling, and training analytics.
 Built to support coaches and teams in monitoring workload, planning sessions, and optimizing performance.
 
+![Design sem nome (6)](https://github.com/user-attachments/assets/b5dbfbac-44fc-4a0c-999e-ad726d32af0b)
+
 ---
 
 ## Overview
@@ -165,6 +167,18 @@ Fullstack Developer
 * LinkedIn: (add aqui depois)
 
 ---
+
+---
+
+## Screenshots
+
+### Dashboard & Analytics
+<img width="1918" height="1079" alt="Captura de tela de 2026-03-17 10-37-55" src="https://github.com/user-attachments/assets/4a326980-888e-46c9-a523-204c4624eb9c" />
+
+
+### Training Calendar
+<img width="1920" height="993" alt="Captura de tela de 2026-03-17 10-39-37" src="https://github.com/user-attachments/assets/07711247-74d6-495f-9b6f-b424fb99241b" />
+
 
 ## ⭐ If you like this project
 
